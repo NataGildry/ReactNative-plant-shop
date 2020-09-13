@@ -17,9 +17,11 @@ class Browse extends Component {
         active: 'Products',
         categories: []
     };
+
     componentDidMount() {
-        this.setState({ categories: this.props.categories })
+        this.setState({categories: this.props.categories})
     }
+
     handleTab = tab => {
         const {categories} = this.props;
         const filtered = categories.filter(category =>
@@ -46,8 +48,8 @@ class Browse extends Component {
     };
 
     render() {
-        const { profile, navigation } = this.props;
-        const { categories } = this.state;
+        const {profile, navigation} = this.props;
+        const {categories} = this.state;
         const tabs = ['Products', 'Inspiration', 'Shop'];
         return (
             <Block style={styles.container}>
@@ -65,13 +67,13 @@ class Browse extends Component {
                 </Block>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    style={{ paddingVertical: theme.sizes.base * 2 }}
+                    style={{paddingVertical: theme.sizes.base * 2}}
                 >
                     <Block flex={false} row space="between" style={styles.categories}>
                         {categories.map(category => (
                             <TouchableOpacity
                                 key={category.name}
-                                onPress={() => navigation.navigate("Explore", { category })}
+                                onPress={() => navigation.navigate("Explore", {category})}
                             >
                                 <Card center middle shadow style={styles.category}>
                                     <Badge
@@ -79,7 +81,7 @@ class Browse extends Component {
                                         size={50}
                                         color="rgba(41,216,143,0.20)"
                                     >
-                                        <Image source={category.image} />
+                                        <Image source={category.image}/>
                                     </Badge>
                                     <Text medium height={20}>
                                         {category.name}

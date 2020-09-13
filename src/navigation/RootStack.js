@@ -1,7 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {Image} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
+import * as Icon from '@expo/vector-icons';
 
 import Welcome from '../screens/Welcome';
 import Login from '../screens/Login';
@@ -12,7 +13,7 @@ import Product from '../screens/Product';
 import Explore from '../screens/Explore';
 import Settings from '../screens/Settings';
 
-import { theme } from '../constants';
+import {theme} from '../constants';
 
 
 const Stack = createStackNavigator();
@@ -27,7 +28,7 @@ export const RootStack = () => {
                 elevation: 0 // for android
             },
             headerBackImage: () => (<Image
-                 source={require("../../assets/icons/Back.png")}
+                source={require("../../assets/icons/Back.png")}
             />),
             headerBackTitle: true,
             headerLeftContainerStyle: {
@@ -47,7 +48,14 @@ export const RootStack = () => {
             <Stack.Screen name="Forgot" component={Forgot}/>
             <Stack.Screen name="SignUp" component={SignUp}/>
             <Stack.Screen name="Browse" component={Browse}/>
-            <Stack.Screen name="Product" component={Product}/>
+            <Stack.Screen name="Product" component={Product}
+                          options={{
+                              headerRight: () => (
+                                  <TouchableOpacity onPress={() => {
+                                  }}>
+                                      <Icon.Entypo name="dots-three-horizontal" color={theme.colors.gray}/>
+                                  </TouchableOpacity>)
+                          }}/>
             <Stack.Screen name="Explore" component={Explore}/>
             <Stack.Screen name="Settings" component={Settings}/>
         </Stack.Navigator>
